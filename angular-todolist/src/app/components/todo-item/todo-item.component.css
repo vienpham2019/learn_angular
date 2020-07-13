@@ -1,0 +1,7 @@
+.isComplete{
+    text-decoration: line-through;
+}
+
+.todo{
+    color: red;
+}
