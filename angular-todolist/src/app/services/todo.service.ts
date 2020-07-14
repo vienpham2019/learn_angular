@@ -28,4 +28,15 @@ export class TodoService {
     const url = `${this.todoUrl}/${todo.id}`
     return this.http.patch(url , todo , httpObtions)
   }
+
+  // delete Todo 
+  deleteTodo(todo:Todo):Observable<Todo> {
+    const url = `${this.todoUrl}/${todo.id}`
+    return this.http.delete<Todo>(url , httpObtions)
+  } 
+
+  // add Todo 
+  addTodo(todo:Todo):Observable<Todo>{
+    return this.http.post<Todo>(this.todoUrl , todo , httpObtions)
+  }
 }

@@ -1,0 +1,9 @@
+.header{
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
+    color: white;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}

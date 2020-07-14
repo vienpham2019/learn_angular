@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TodoService} from '../../services/todo.service'
+import { TodoService } from '../../services/todo.service'
 import { Todo } from '../../models/Todo'
 
 @Component({
@@ -14,6 +14,15 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoService.getTodos().subscribe(todos => this.todos = todos)
+  }
+
+  deleteTodo(todo:Todo){
+    this.todos = this.todos.filter(t => t.id !== todo.id)
+    this.todoService.deleteTodo(todo).subscribe(todo => console.log(todo))
+  }
+
+  addTodo(todo:Todo){
+    this.todoService.addTodo(todo).subscribe(t => this.todos.push(t))
   }
 
 }
