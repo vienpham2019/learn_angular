@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-todolist": {
+    "angular-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-todolist",
+            "outputPath": "dist/angular-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-todolist:build"
+            "browserTarget": "angular-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-todolist:build:production"
+              "browserTarget": "angular-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-todolist:build"
+            "browserTarget": "angular-app:build"
           }
         },
         "test": {
@@ -110,19 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-todolist:serve"
+            "devServerTarget": "angular-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-todolist:serve:production"
+              "devServerTarget": "angular-app:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "angular-todolist",
-  "cli": {
-    "analytics": "56440fb0-e57f-4e0f-8aa6-458e99d306cb"
-  }
+    }},
+  "defaultProject": "angular-app"
 }
