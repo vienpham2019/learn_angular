@@ -5,14 +5,15 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div>
       <h2> Welcome to {{title}} </h2> 
-      <input [(ngModel)] = "first_name" type='text' />{{first_name}} <br> 
+      <h3 *ngIf= displayMessage > This is hidden ? </h3> 
+      <button (click) = "displayMessage = !displayMessage" >{{displayMessage ? 'hidden' : 'show' }}</button > 
     </div> 
   `,
   styles: []
 })
 export class TestComponent implements OnInit {
   title: string = "code evolution"
-  greeting: string = ""
+  displayMessage: boolean = true
   constructor() { }
 
   ngOnInit(): void {
