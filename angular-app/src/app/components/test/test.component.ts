@@ -5,8 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div>
       <h2> Welcome to {{title}} </h2> 
-      <input #myInput type='text'/> 
-      <button (click) = "logMessage(myInput.value)">Log</button> 
+      <input [(ngModel)] = "first_name" type='text' />{{first_name}} <br> 
     </div> 
   `,
   styles: []
@@ -17,10 +16,6 @@ export class TestComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  logMessage (value) {
-    console.log(value)
   }
 
 }
