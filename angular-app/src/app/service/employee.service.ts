@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class EmployeeService {
-  private _url: string = "https://jsonplaceholder.typicode.com/todos1"
+  private _url: string = "https://jsonplaceholder.typicode.com/todos"
   private _limit : string = "?_limit=10"
 
   constructor(private _http: HttpClient) { }
