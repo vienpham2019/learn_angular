@@ -6,6 +6,7 @@ import { EmployeeService } from '../../service/employee.service'
   template: `
     <ul *ngFor = "let employee of employees"> 
       <li>{{employee.title + " -- " + employee.id}} </li>
+      <button (click) = "onDelete(employee)"> X </button> 
     </ul>
     <form (submit) = "onSubmit($event)"> 
       <label> Employee name </label> 
@@ -28,6 +29,11 @@ export class TestComponent implements OnInit {
     let [title] = event.target
     this._employeeService.addNewEmployee(title.value).subscribe(data => this.employees.push(data))
     event.target.reset()
+  }
+
+  onDelete(employee){
+    this._employeeService.deleteEmployee(employee.id)
+      .subscribe(data => this.employees = this.employees.filter(e => e.id !== employee.id))
   }
 
 }
