@@ -5,12 +5,10 @@ import { EmployeeService } from '../../service/employee.service'
   selector: 'app-test',
   template: `
     <ul *ngFor = "let employee of employees"> 
-      <li>{{employee.name + " -- " + employee.age + " -- " + employee.id}} </li>
+      <li>{{employee.title + " -- " + employee.id}} </li>
     </ul>
     <form (submit) = "onSubmit($event)"> 
       <label> Employee name </label> 
-      <input type = 'text' /> <br> 
-      <label> Employee age </label> 
       <input type = 'text' /> <br> 
       <input type = 'submit' value = 'Submit' />  
     </form> 
@@ -18,17 +16,17 @@ import { EmployeeService } from '../../service/employee.service'
   styles: []
 })
 export class TestComponent implements OnInit {
-  employees: any[] 
+  employees: any[] = []
   constructor(private _employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.employees = this._employeeService.getEmployees()
+    this._employeeService.getEmployees().subscribe(data => this.employees = data)
   }
 
   onSubmit(event){
     event.preventDefault()
-    let [name , age] = event.target
-    this.employees = this._employeeService.addNewEmployee(name.value , age.value)
+    let [title] = event.target
+    this._employeeService.addNewEmployee(title.value).subscribe(data => this.employees.push(data))
     event.target.reset()
   }
 

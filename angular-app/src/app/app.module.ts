@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { EmployeeService } from './service/employee.service'
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,9 +16,12 @@ import { TestComponent } from './components/test/test.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [EmployeeService],
+  providers: [
+    EmployeeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

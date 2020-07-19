@@ -1,23 +1,28 @@
 import { Injectable } from '@angular/core';
+import { HttpClient , HttpHeaders } from '@angular/common/http'
+import { IEmployee } from '../module/employee'
+import { Observable } from 'rxjs'
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-  employees: any[] = [
-    {name: 'Vien', age: '22', id: '1'},
-    {name: 'Viet', age: '19', id: '2'},
-    {name: 'Duy', age: '23', id: '3'},
-    {name: 'Man', age: '30', id: '4'}
-  ]
-  constructor() { }
+  private _url: string = "https://jsonplaceholder.typicode.com/todos?_limit=10"
 
-  getEmployees () {
-    return this.employees
+  constructor(private _http: HttpClient) { }
+
+  getEmployees(): Observable <IEmployee[]> {
+    return this._http.get<IEmployee[]>(this._url)
   }
 
-  addNewEmployee(name , age) {
-    this.employees.push({name,age,id: this.employees.length + 1})
-    return this.employees
+  addNewEmployee(title) {
+    let new_employee = {title, completed: false, id: Math.floor(Math.random() * Math.floor(100))}
+    return this._http.post<IEmployee>(this._url , new_employee , httpOptions)
   }
 }
