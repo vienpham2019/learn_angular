@@ -4,6 +4,7 @@ import { EmployeeService } from '../../service/employee.service'
 @Component({
   selector: 'app-test',
   template: `
+    <h2> {{errorMessage}} </h2> 
     <ul *ngFor = "let employee of employees"> 
       <li>{{employee.title + " -- " + employee.id}} </li>
       <button (click) = "onDelete(employee)"> X </button> 
@@ -18,22 +19,13 @@ import { EmployeeService } from '../../service/employee.service'
 })
 export class TestComponent implements OnInit {
   employees: any[] = []
+  errorMessage: string 
   constructor(private _employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this._employeeService.getEmployees().subscribe(data => this.employees = data)
+    this._employeeService.getEmployees().subscribe(
+      data => this.employees = data,
+      error => this.errorMessage = error 
+    )
   }
-
-  onSubmit(event){
-    event.preventDefault()
-    let [title] = event.target
-    this._employeeService.addNewEmployee(title.value).subscribe(data => this.employees.push(data))
-    event.target.reset()
-  }
-
-  onDelete(employee){
-    this._employeeService.deleteEmployee(employee.id)
-      .subscribe(data => this.employees = this.employees.filter(e => e.id !== employee.id))
-  }
-
 }

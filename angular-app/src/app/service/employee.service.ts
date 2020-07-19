@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient , HttpHeaders } from '@angular/common/http'
+import { HttpClient , HttpHeaders , HttpErrorResponse } from '@angular/common/http'
 import { IEmployee } from '../module/employee'
-import { Observable } from 'rxjs'
+import { Observable , throwError} from 'rxjs'
+import { catchError } from 'rxjs/operators'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,13 +14,19 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class EmployeeService {
-  private _url: string = "https://jsonplaceholder.typicode.com/todos"
+  private _url: string = "https://jsonplaceholder.typicode.com/todos1"
   private _limit : string = "?_limit=10"
 
   constructor(private _http: HttpClient) { }
 
   getEmployees(): Observable <IEmployee[]> {
-    return this._http.get<IEmployee[]>(this._url + this._limit)
+    return this._http.get<IEmployee[]>(this._url + this._limit).pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  errorHandler(error: HttpErrorResponse){
+    return throwError(error.message || "Server Error")
   }
 
   addNewEmployee(title): Observable <IEmployee> {
