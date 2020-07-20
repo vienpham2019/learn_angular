@@ -18,4 +18,22 @@ export class Test2Component implements OnInit {
     )
   }
 
+  onSubmit (event){
+    event.preventDefault()
+    this._employeeService.addNewEmployee(event.target[0].value)
+      .subscribe(
+        data => this.employees.push(data),
+        error => this.errorMessage = error
+      )
+    event.target.reset()
+  }
+
+  delete (employeeId) {
+    this._employeeService.deleteEmployee(employeeId)
+      .subscribe(
+        data => this.employees = this.employees.filter(e => e.id !== employeeId),
+        error => this.errorMessage = error 
+      )
+  }
+
 }

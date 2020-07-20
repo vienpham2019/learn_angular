@@ -2,4 +2,10 @@
 {{errorMessage}}
 <ul *ngFor="let employee of employees">
     <li>{{ employee.title }} --- {{ employee.id }}</li>
+    <button (click) = "delete(employee.id)"> X </button>
 </ul>
+<form (submit) = "onSubmit($event)">
+    <label>Title</label>
+    <input type="text">
+    <input type="submit" value="Submit">
+</form>
