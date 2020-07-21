@@ -10,6 +10,7 @@ import { Test2Component } from './components/test2/test2.component';
 import { TestComponent } from './components/test/test.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { TestdetailComponent } from './components/testdetail/testdetail.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     Test2Component,
     TestComponent,
     PagenotfoundComponent,
-    HomepageComponent
+    HomepageComponent,
+    TestdetailComponent
   ],
   imports: [
     BrowserModule,

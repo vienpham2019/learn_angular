@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../service/employee.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-test2',
@@ -9,7 +10,7 @@ import { EmployeeService } from '../../service/employee.service'
 export class Test2Component implements OnInit {
   employees: any[] = []
   errorMessage: string = ''
-  constructor(private _employeeService: EmployeeService) { }
+  constructor(private _employeeService: EmployeeService , private _router: Router) { }
 
   ngOnInit(): void {
     this._employeeService.getEmployees().subscribe(
@@ -34,6 +35,10 @@ export class Test2Component implements OnInit {
         data => this.employees = this.employees.filter(e => e.id !== employeeId),
         error => this.errorMessage = error 
       )
+  }
+
+  getDetail(id):void {
+    this._router.navigate(['/test-detail' , id])
   }
 
 }
