@@ -8,12 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Test2Component } from './components/test2/test2.component';
 import { TestComponent } from './components/test/test.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Test2Component,
-    TestComponent
+    TestComponent,
+    PagenotfoundComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
