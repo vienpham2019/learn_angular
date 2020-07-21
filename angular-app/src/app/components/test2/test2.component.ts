@@ -41,7 +41,7 @@ export class Test2Component implements OnInit {
   }
 
   getDetail(id):void {
-    this._router.navigate(['/test-detail' , id])
+    this._router.navigate(['/test2-component' , id])
   }
 
   isSelected(params){

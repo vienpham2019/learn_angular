@@ -15,11 +15,16 @@ export class TestdetailComponent implements OnInit {
   }
 
   toPrev():void{
-    this._router.navigate(['/test-detail', this.test_id - 1])
+    this._router.navigate(['../', this.test_id - 1] , {relativeTo: this._route})
   }
 
   toNext():void{
-    this._router.navigate(['/test-detail', this.test_id + 1])
+    this._router.navigate(['../' , this.test_id + 1] , {relativeTo: this._route})
   }
+
+  goBack():void{
+    this._router.navigate(['../' , {id: this.test_id}] , {relativeTo: this._route})
+  }
+
 
 }

@@ -1,4 +1,4 @@
 <h1>{{test_id}}</h1>
 <a (click)="toPrev()">Prev</a>
 <a (click)="toNext()">Next</a>
-<button [routerLink] = "['/test2-component' , {id: test_id}]">Back</button>
+<button (click) = "goBack()">Back</button>

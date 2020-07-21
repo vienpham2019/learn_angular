@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'home' , component: HomepageComponent},
   {path: 'test-component' , component: TestComponent},
   {path: 'test2-component' , component: Test2Component},
-  {path: 'test-detail/:id' , component: TestdetailComponent},
+  {path: 'test2-component/:id' , component: TestdetailComponent},
   {path: '**' , component: PagenotfoundComponent},
 ];
 
