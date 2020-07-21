@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../service/employee.service'
-import { Router } from '@angular/router'
+import { Router , ActivatedRoute , ParamMap} from '@angular/router'
 
 @Component({
   selector: 'app-test2',
@@ -10,13 +10,16 @@ import { Router } from '@angular/router'
 export class Test2Component implements OnInit {
   employees: any[] = []
   errorMessage: string = ''
-  constructor(private _employeeService: EmployeeService , private _router: Router) { }
+  selected_id: string 
+  constructor(private _employeeService: EmployeeService , private _router: Router , private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this._employeeService.getEmployees().subscribe(
       data => this.employees = data,
       error => this.errorMessage = error 
     )
+
+    this._route.paramMap.subscribe((params: ParamMap) => this.selected_id = params.get('id') )
   }
 
   onSubmit (event){
@@ -39,6 +42,10 @@ export class Test2Component implements OnInit {
 
   getDetail(id):void {
     this._router.navigate(['/test-detail' , id])
+  }
+
+  isSelected(params){
+    return params.id == this.selected_id
   }
 
 }
