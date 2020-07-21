@@ -30,7 +30,7 @@ export class EmployeeService {
   }
 
   addNewEmployee(title): Observable <IEmployee> {
-    let new_employee = {title, completed: false, id: Math.floor(Math.random() * Math.floor(100))}
+    let new_employee = {title, completed: false}
     return this._http.post<IEmployee>(this._url , new_employee , httpOptions)
   }
 
