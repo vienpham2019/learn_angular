@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute , ParamMap , Router} from '@angular/router'
 
 @Component({
   selector: 'app-testdetail',
@@ -7,12 +7,19 @@ import { ActivatedRoute } from '@angular/router'
   styleUrls: ['./testdetail.component.css']
 })
 export class TestdetailComponent implements OnInit {
-  test_id: string 
-  constructor(private _route: ActivatedRoute) { }
+  test_id: number
+  constructor(private _route: ActivatedRoute , private _router: Router) { }
 
   ngOnInit(): void {
-    let {id} = this._route.snapshot.params
-    this.test_id = id 
+    this._route.paramMap.subscribe((params: ParamMap) => this.test_id = parseInt(params.get('id')))
+  }
+
+  toPrev():void{
+    this._router.navigate(['/test-detail', this.test_id - 1])
+  }
+
+  toNext():void{
+    this._router.navigate(['/test-detail', this.test_id + 1])
   }
 
 }
