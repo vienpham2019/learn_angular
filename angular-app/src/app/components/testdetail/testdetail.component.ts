@@ -26,5 +26,13 @@ export class TestdetailComponent implements OnInit {
     this._router.navigate(['../' , {id: this.test_id}] , {relativeTo: this._route})
   }
 
+  showOverview():void{
+    this._router.navigate(['overview'] , {relativeTo: this._route})
+  }
+
+  showContact():void{
+    this._router.navigate(['contact'] , { relativeTo: this._route})
+  }
+
 
 }

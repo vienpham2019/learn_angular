@@ -1,4 +1,13 @@
 <h1>{{test_id}}</h1>
-<a (click)="toPrev()">Prev</a>
-<a (click)="toNext()">Next</a>
+<p>
+    <button (click) = "showOverview()">Overview</button>
+    <button (click) = "showContact()">Contact</button>
+</p>
+<router-outlet></router-outlet>
+
+<p>
+    <button (click) = "toPrev()">Prev</button>
+    <button (click) = "toNext()">Next</button>
+</p>
+
 <button (click) = "goBack()">Back</button>
