@@ -11,6 +11,8 @@ import { TestComponent } from './components/test/test.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { TestdetailComponent } from './components/testdetail/testdetail.component';
+import { DepartmentOverviewComponent } from './component/department-overview/department-overview.component';
+import { DepartmentContactComponent } from './component/department-contact/department-contact.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { TestdetailComponent } from './components/testdetail/testdetail.componen
     TestComponent,
     PagenotfoundComponent,
     HomepageComponent,
-    TestdetailComponent
+    TestdetailComponent,
+    DepartmentOverviewComponent,
+    DepartmentContactComponent
   ],
   imports: [
     BrowserModule,
