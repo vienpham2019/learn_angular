@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { HomeComponent } from './components/home/home.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { NewUserServer } from './server/new-user-server.service'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [NewUserServer],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

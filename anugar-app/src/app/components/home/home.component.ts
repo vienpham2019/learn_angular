@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NewUserModel } from '../../model/new_user_model';
+import { NewUserServer } from '../../server/new-user-server.service'
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  users: NewUserModel[]
+  constructor(private _server: NewUserServer) { }
 
   ngOnInit(): void {
+    this.users = this._server.getUsers()
   }
 
 }

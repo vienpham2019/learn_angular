@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forms.component.css']
 })
 export class FormsComponent implements OnInit {
-
+  topics: string[] = ["React" , "Angular" , "Vu" , "Go"]
+  
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(userForm){
+    console.log(userForm.value)
+    userForm.reset()
   }
 
 }

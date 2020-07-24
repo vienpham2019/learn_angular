@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'anugar-app';
-  topics: string[] = ["React" , "Angular" , "Vu" , "Go"]
 }
