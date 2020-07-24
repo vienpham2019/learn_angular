@@ -16,4 +16,8 @@ export class HomeComponent implements OnInit {
     this.users = this._server.getUsers()
   }
 
+  show_hidden_user(id):void {
+    this.users = this._server.showUser(id)
+  }
+
 }

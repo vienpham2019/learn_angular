@@ -1,10 +1,25 @@
 <h1 class="text-center">This is Home Page</h1>
 <div class="list-group container">
-    <a 
+    <div 
         *ngFor="let user of users" 
         class="list-group-item list-group-item-action list-group-item-secondary" 
-        [routerLink] = "['/user', user.id]"
+        (click) = "show_hidden_user(user.id)"
     >
-        {{user.first_name + " " + user.last_name}}
-    </a>
+        <a [routerLink] = "['/user', user.id]">
+            {{user.first_name + " " + user.last_name}}
+        </a>
+        <div class="container" *ngIf="user.show">
+            <label><strong>Email: </strong></label> {{user.email}} 
+            <br>
+            <label><strong>Address: </strong></label> {{user.address}}
+            <br>
+            <label><strong>City: </strong></label> {{user.city}}
+            <br>
+            <label><strong>State: </strong></label> {{user.state}}
+            <br>
+            <label><strong>Zipcode: </strong></label> {{user.zipcode}}
+            <br>
+            <label><strong>Language: </strong></label> {{user.language}}
+        </div>
+    </div>
 </div>

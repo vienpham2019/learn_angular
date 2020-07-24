@@ -7,5 +7,6 @@ export class NewUserModel {
     city: string; 
     state: string; 
     zipcode: string; 
-    language: string
+    language: string;
+    show: boolean
 }
