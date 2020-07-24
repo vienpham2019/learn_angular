@@ -4,10 +4,16 @@ import { FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsComponent } from './components/forms/forms.component';
+import { HomeComponent } from './components/home/home.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormsComponent,
+    HomeComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

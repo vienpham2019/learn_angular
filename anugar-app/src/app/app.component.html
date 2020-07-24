@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <h1>Bootcamp Enrollment Form </h1>
 
   <form #userForm="ngForm">
@@ -74,4 +74,10 @@
       <button type="submit" class="btn btn-info">Submit</button>
     </div>
   </form>
-</div>
+</div> -->
+<p>
+  <button class="btn btn-info" [routerLink] = "['/home']">Home</button>
+  <button class="btn btn-info" [routerLink] = "['/forms']">Forms</button>
+</p>
+
+<router-outlet></router-outlet>
