@@ -14,4 +14,8 @@ export class NewUserServer{
   getUsers(){
     return this.users
   }
+
+  getUser(id){ 
+    return this.users.find(u => u.id == id)
+  }
 }

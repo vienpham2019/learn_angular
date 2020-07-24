@@ -1,6 +1,6 @@
 <h1 class="text-center">This is Home Page</h1>
 <ul>
     <li *ngFor="let user of users">
-        <a>{{user.first_name + " " + user.last_name}}</a>
+        <a [routerLink] = "['/user', user.id]">{{user.first_name + " " + user.last_name}}</a>
     </li>
 </ul>

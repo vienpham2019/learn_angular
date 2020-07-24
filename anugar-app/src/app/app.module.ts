@@ -7,14 +7,16 @@ import { AppComponent } from './app.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { HomeComponent } from './components/home/home.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
-import { NewUserServer } from './server/new-user-server.service'
+import { NewUserServer } from './server/new-user-server.service';
+import { UserComponent } from './components/user/user.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     FormsComponent,
     HomeComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
