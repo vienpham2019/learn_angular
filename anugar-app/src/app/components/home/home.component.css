@@ -1,0 +1,9 @@
+.current_id{
+    background-color: rgb(0, 63, 58);
+    color: white;
+}
+
+.current_id:hover{
+    background-color: rgb(2, 85, 78);
+    color: white;
+}

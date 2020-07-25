@@ -13,6 +13,9 @@
     <br>
     <label><strong>Language: </strong></label> {{user.language}}
     <br>
-    <button class="btn btn-info mr-3" [routerLink] = "['/home']">Home</button> 
-    <button class="btn btn-danger" (click) = "deleteUser()">Delete</button>
+    <button class="btn btn-info m-2" (click) = "goHome()">Home</button> 
+    <button class="btn btn-danger m-2" (click) = "deleteUser()">Delete</button>
+    <br>
+    <button class="btn btn-info m-2" (click) = "goPrev()">Prev</button>
+    <button class="btn btn-info m-2" (click) = "goNext()">Next</button>
 </div>

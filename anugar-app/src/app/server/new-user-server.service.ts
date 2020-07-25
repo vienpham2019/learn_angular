@@ -38,4 +38,8 @@ export class NewUserServer{
   deleteUser(id):void{
     this.users = this.users.filter(u => u.id !== id)
   }
+
+  find_user_id (id) {
+    return this.users.find(u => u.id === id)
+  }
 }

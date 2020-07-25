@@ -4,6 +4,7 @@
         *ngFor="let user of users" 
         class="list-group-item list-group-item-action list-group-item-secondary" 
         (click) = "show_hidden_user(user.id)"
+        [class.current_id] = "current_id === user.id"
     >
         <a [routerLink] = "['/user', user.id]">
             {{user.first_name + " " + user.last_name}}
