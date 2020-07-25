@@ -7,7 +7,7 @@ import { NewUserModel } from '../model/new_user_model'
 })
 export class NewUserServer{
   users: NewUserModel[] = [
-    {id: 1 , first_name: "vien" , last_name: "pham" , email: "vienpham@gmail.com" , address: "1223 briai" , city: "conroe" , state: "Tx", zipcode: "77301", language: "React" , show: true},
+    {id: 1 , first_name: "vien" , last_name: "pham" , email: "vienpham@gmail.com" , address: "1223 briai" , city: "conroe" , state: "Tx", zipcode: "77301", language: "React" , show: false},
     {id: 2 , first_name: "vien2" , last_name: "pham" , email: "vienpham2@gmail.com" , address: "1223 briai" , city: "conroe" , state: "Tx", zipcode: "77301", language: "React" , show: false}
   ]
   constructor() { }
@@ -22,8 +22,16 @@ export class NewUserServer{
 
   showUser(id) {
     let user = this.users.find(u => u.id === id)
-    console.log('hit')
     user.show = !user.show 
     return this.users
+  }
+
+  addNewUser(user): void{
+    let {first_name , last_name , email , language} = user
+    let {address , city , state , zipcode} = user.address_group
+    let new_user = {
+      id: this.users.length + 1, first_name , last_name , email , address, city , state , zipcode , language , show: false
+    }
+    this.users.push(new_user)
   }
 }

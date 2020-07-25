@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewUserServer } from '../../server/new-user-server.service'
 
 @Component({
   selector: 'app-forms',
@@ -8,13 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class FormsComponent implements OnInit {
   topics: string[] = ["React" , "Angular" , "Vu" , "Go"]
   
-  constructor() { }
+  constructor(private _server: NewUserServer) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(userForm){
-    console.log(userForm.value)
+  onSubmit(userForm): void{
+    this._server.addNewUser(userForm.value)
     userForm.reset()
   }
 
