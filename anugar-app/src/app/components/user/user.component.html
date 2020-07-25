@@ -12,4 +12,7 @@
     <label><strong>Zipcode: </strong></label> {{user.zipcode}}
     <br>
     <label><strong>Language: </strong></label> {{user.language}}
+    <br>
+    <button class="btn btn-info mr-3" [routerLink] = "['/home']">Home</button> 
+    <button class="btn btn-danger" (click) = "deleteUser()">Delete</button>
 </div>

@@ -34,4 +34,8 @@ export class NewUserServer{
     }
     this.users.push(new_user)
   }
+
+  deleteUser(id):void{
+    this.users = this.users.filter(u => u.id !== id)
+  }
 }
