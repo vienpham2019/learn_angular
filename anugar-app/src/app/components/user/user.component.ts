@@ -42,7 +42,14 @@ export class UserComponent implements OnInit {
 
   updateUser(user){
     this.edit = !this.edit 
-    console.log(user)
+    let {first_name , last_name , email , language} = user
+    let {address , city , state , zipcode} = user.address_group
+    let update_user = {
+      id: this.current_id , first_name , last_name , email , address, city , state , zipcode , language , show: this.user.show
+    }
+    console.log(update_user)
+    this._server.updateUser(update_user)
+    this.user = update_user
   }
 
 }

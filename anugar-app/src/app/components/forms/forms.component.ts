@@ -20,7 +20,7 @@ export class FormsComponent implements OnInit {
   }
 
   onSubmit(userForm): void{
-    if(!!this.user.first_name){
+    if(!this.user.first_name){
       this._server.addNewUser(userForm.value)
     }else{
       this.updateUser.emit(userForm.value)

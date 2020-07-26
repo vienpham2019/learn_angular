@@ -35,6 +35,10 @@ export class NewUserServer{
     this.users.push(new_user)
   }
 
+  updateUser(user){
+    this.users[this.users.findIndex(u => u.id === user.id)] = user
+  }
+
   deleteUser(id):void{
     this.users = this.users.filter(u => u.id !== id)
   }
