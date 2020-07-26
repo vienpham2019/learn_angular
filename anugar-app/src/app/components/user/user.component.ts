@@ -11,6 +11,7 @@ import { ActivatedRoute , Router , ParamMap } from '@angular/router'
 export class UserComponent implements OnInit {
   user: NewUserModel
   current_id: number 
+  edit: boolean = false 
   constructor(private _server: NewUserServer , private _route: ActivatedRoute , private _router: Router) { }
 
   ngOnInit(): void {
@@ -37,6 +38,11 @@ export class UserComponent implements OnInit {
   goPrev(){
     this.current_id = this._server.find_user_id(this.current_id - 1) ? this.current_id - 1 : this._server.getUsers().length 
     this._router.navigate(['/user', this.current_id])
+  }
+
+  updateUser(user){
+    this.edit = !this.edit 
+    console.log(user)
   }
 
 }

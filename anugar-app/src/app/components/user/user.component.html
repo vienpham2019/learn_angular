@@ -1,21 +1,29 @@
 <h2 class="text-center">{{user.first_name + " " + user.last_name}}</h2>
 <br>
 <div class="container">
-    <label><strong>Email: </strong></label> {{user.email}} 
-    <br>
-    <label><strong>Address: </strong></label> {{user.address}}
-    <br>
-    <label><strong>City: </strong></label> {{user.city}}
-    <br>
-    <label><strong>State: </strong></label> {{user.state}}
-    <br>
-    <label><strong>Zipcode: </strong></label> {{user.zipcode}}
-    <br>
-    <label><strong>Language: </strong></label> {{user.language}}
-    <br>
+    <app-forms *ngIf = "edit" [user] = "user" (updateUser) = "updateUser($event)" ></app-forms>
+    <div *ngIf = "!edit">
+        <br>
+        <label><strong>Email: </strong></label> {{user.email}} 
+        <br>
+        <label><strong>Address: </strong></label> {{user.address}}
+        <br>
+        <label><strong>City: </strong></label> {{user.city}}
+        <br>
+        <label><strong>State: </strong></label> {{user.state}}
+        <br>
+        <label><strong>Zipcode: </strong></label> {{user.zipcode}}
+        <br>
+        <label><strong>Language: </strong></label> {{user.language}}
+        <br>
+    </div>
+
     <button class="btn btn-info m-2" (click) = "goHome()">Home</button> 
     <button class="btn btn-danger m-2" (click) = "deleteUser()">Delete</button>
     <br>
     <button class="btn btn-info m-2" (click) = "goPrev()">Prev</button>
     <button class="btn btn-info m-2" (click) = "goNext()">Next</button>
+    <br>
+    <button class="btn btn-info m-2" (click) = "edit = !edit">Edit</button>
 </div>
+

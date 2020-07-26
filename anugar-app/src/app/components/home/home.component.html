@@ -9,7 +9,12 @@
         <a [routerLink] = "['/user', user.id]">
             {{user.first_name + " " + user.last_name}}
         </a>
-        <div class="container" *ngIf="user.show">
+        <div class="container" *ngIf="user.show ; then thenBlock">
+            
+        </div>
+
+        <ng-template #thenBlock> 
+            <br>
             <label><strong>Email: </strong></label> {{user.email}} 
             <br>
             <label><strong>Address: </strong></label> {{user.address}}
@@ -21,6 +26,7 @@
             <label><strong>Zipcode: </strong></label> {{user.zipcode}}
             <br>
             <label><strong>Language: </strong></label> {{user.language}}
-        </div>
+        </ng-template>
     </div>
+
 </div>
