@@ -17,6 +17,11 @@
             <input type="email" name="email" class="form-control" [ngModel] = "user.email">
         </div>
 
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" #phone="ngModel" pattern="^\d{10}$|^\d{3}-\d{3}-\d{4}$|^\(\d{3}\)-\d{3}-\d{4}$" [class.is-invalid] = "phone.touched && phone.invalid" [class.is-valid] = "phone.touched && phone.valid" required name="phone" class="form-control" [ngModel]= "user.phone">
+        </div>
+
         <div ngModelGroup="address_group">
             <div class="form-group">
                 <label>Address</label>
