@@ -20,8 +20,6 @@
         <div class="form-group">
             <label>Phone</label>
             <input type="text" #phone="ngModel" pattern="^\(?(\d{3})\)?[-. ]?(\d{3})[-. ]?(\d{4})$" [class.is-invalid] = "phone.touched && phone.invalid" [class.is-valid] = "phone.touched && phone.valid" required name="phone" class="form-control" [ngModel]= "user.phone">
-            <!-- <small *ngIf="phone.touched && phone.invalid" class="text-danger">Phone is required</small>
-            <small [class.d-none] = "phone.touched && phone.invalid"> Phone is required</small> -->
             <div *ngIf = "phone.errors && phone.touched && phone.invalid" class="text-danger">
                 <small *ngIf = "phone.errors.required">Phone is required</small>
                 <small *ngIf = "phone.errors.pattern">Phone need in the format (xxx)-xxx-xxxx or 10 digits</small>
@@ -52,9 +50,18 @@
 
         <div class="form-group">
             <label>Language</label>
-            <select name="language" class="form-control" [ngModel] = "user.language">
+            <select 
+                name="language" 
+                #topic = "ngModel" 
+                class="custom-select" 
+                [ngModel] = "user.language"
+                [class.is-invalid] = "hasError(topic.value) && topic.touched"
+                [class.is-valid] = "!hasError(topic.value) && topic.touched"
+            >
+                <option value="default">Im interested in</option>
                 <option *ngFor="let topic of topics" value="{{topic}}">{{topic}}</option>
             </select>
+            <small class="text-danger" *ngIf = "hasError(topic.value) && topic.touched">Please choose a topic</small>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

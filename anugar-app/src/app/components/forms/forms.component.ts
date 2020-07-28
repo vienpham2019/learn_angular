@@ -29,4 +29,8 @@ export class FormsComponent implements OnInit {
     userForm.reset()
   }
 
+  hasError(value){
+    return value === "default"
+  }
+
 }
