@@ -20,6 +20,7 @@ export class FormsComponent implements OnInit {
   }
 
   onSubmit(userForm): void{
+    console.log(this.updateUser)
     if(!this.user.first_name){
       this._server.addNewUser(userForm.value)
     }else{
