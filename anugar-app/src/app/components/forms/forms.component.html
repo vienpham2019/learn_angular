@@ -20,6 +20,12 @@
         <div class="form-group">
             <label>Phone</label>
             <input type="text" #phone="ngModel" pattern="^\(?(\d{3})\)?[-. ]?(\d{3})[-. ]?(\d{4})$" [class.is-invalid] = "phone.touched && phone.invalid" [class.is-valid] = "phone.touched && phone.valid" required name="phone" class="form-control" [ngModel]= "user.phone">
+            <!-- <small *ngIf="phone.touched && phone.invalid" class="text-danger">Phone is required</small>
+            <small [class.d-none] = "phone.touched && phone.invalid"> Phone is required</small> -->
+            <div *ngIf = "phone.errors && phone.touched && phone.invalid" class="text-danger">
+                <small *ngIf = "phone.errors.required">Phone is required</small>
+                <small *ngIf = "phone.errors.pattern">Phone need in the format (xxx)-xxx-xxxx or 10 digits</small>
+            </div>
         </div>
 
         <div ngModelGroup="address_group">
