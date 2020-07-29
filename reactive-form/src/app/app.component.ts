@@ -18,4 +18,17 @@ export class AppComponent {
     })
   })
 
+  loadApiData(){
+    this.registrationForm.setValue({
+      userName: 'Bruce',
+      password: 'test',
+      confirmPassword: 'test',
+      address: {
+        city: 'City',
+        state: 'State',
+        zipcode: '123456'
+      }
+    })
+  }
+
 }
