@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
 import { NewUserModel } from '../model/new_user_model'
 
 @Injectable({
@@ -10,7 +11,9 @@ export class NewUserServer{
     {id: 1 , first_name: "vien" , last_name: "pham" , email: "vienpham@gmail.com" , address: "1223 briai" , city: "conroe" , state: "Tx", zipcode: "77301", language: "React" , show: false},
     {id: 2 , first_name: "vien2" , last_name: "pham" , email: "vienpham2@gmail.com" , address: "1223 briai" , city: "conroe" , state: "Tx", zipcode: "77301", language: "React" , show: false}
   ]
-  constructor() { }
+
+  _url: string = ""
+  constructor(private _http: HttpClient) { }
 
   getUsers(){
     return this.users
@@ -26,13 +29,14 @@ export class NewUserServer{
     return this.users
   }
 
-  addNewUser(user): void{
+  addNewUser(user):Observable<any>{
     let {first_name , last_name , email , language} = user
     let {address , city , state , zipcode} = user.address_group
     let new_user = {
       id: this.users.length + 1, first_name , last_name , email , address, city , state , zipcode , language , show: false
     }
     this.users.push(new_user)
+    return this._http.post<any>(this._url , new_user)
   }
 
   updateUser(user){

@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <h1 class="text-center" *ngIf = "!user.first_name">Bootcamp Enrollment Form</h1>
-    <form #userForm = "ngForm" (submit) = "onSubmit(userForm)">
+    <form #userForm = "ngForm" (ngSubmit) = "onSubmit(userForm)" novalidate>
         {{userForm.value | json}}
         <div class="form-group">
             <label>First name</label>

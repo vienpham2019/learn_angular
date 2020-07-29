@@ -10,7 +10,7 @@ import { NewUserModel } from '../../model/new_user_model'
 
 export class FormsComponent implements OnInit {
   topics: string[] = ["React" , "Angular" , "Vu" , "Go"]
-  @Input() user: NewUserModel = {id: 0, first_name: "", last_name: "", email: "", address: "", city: "", state: "", zipcode: "" , language: "" , show: false}
+  @Input() user = {id: 0, first_name: "", last_name: "", email: "", address: "", city: "", state: "", zipcode: "" , language: "" , show: false , phone: ''}
 
   @Output() updateUser = new EventEmitter()
 
