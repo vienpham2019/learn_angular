@@ -10,7 +10,12 @@ export class AppComponent {
   registrationForm = new FormGroup({
     userName: new FormControl('Vien Pham'),
     password: new FormControl(''),
-    confirmPassword: new FormControl('')
+    confirmPassword: new FormControl(''),
+    address: new FormGroup({
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zipcode: new FormControl('')
+    })
   })
 
 }
