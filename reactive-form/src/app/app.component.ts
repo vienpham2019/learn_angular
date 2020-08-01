@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 // import { FormGroup, FormControl } from '@angular/forms'
 import { FormBuilder , Validators } from '@angular/forms'
 import { forbiddenValidation } from './shared/forbiddenValidation'
+import { passwordValidation } from './shared/passwordValidation'
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   constructor (private _fb: FormBuilder ) { }
 
   registrationForm = this._fb.group({
-    userName: ["" , [Validators.required , Validators.minLength(3) , forbiddenValidation(/addmin/)]], 
+    userName: ["" , [Validators.required , Validators.minLength(3)]], 
     email: ["", [Validators.required, forbiddenValidation(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
     phone: ["", [Validators.required, forbiddenValidation(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
     password: ["" , [Validators.required , Validators.minLength(5)]],
@@ -23,7 +24,7 @@ export class AppComponent {
       state: [""],
       zipcode: [""]
     })
-  })
+  } , {validators: passwordValidation})
 
   loadApiData(){
     this.registrationForm.setValue({

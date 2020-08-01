@@ -11,7 +11,6 @@
       <div *ngIf = "formValidation('userName').invalid && formValidation('userName').touched">
         <small class="text-danger" *ngIf = "formValidation('userName').errors?.required">Username is required</small>
         <small class="text-danger" *ngIf = "formValidation('userName').errors?.minlength">Username must be at least 3 characters</small>
-        <small class="text-danger" *ngIf = "formValidation('userName').errors?.forbidden">{{formValidation('userName').errors?.forbidden.value}} username not allow</small>
       </div>
     </div>
 
@@ -36,8 +35,13 @@
       formControlName = "phone"
       class="form-control">
       <div *ngIf = "formValidation('phone').invalid && formValidation('phone').touched">
-        <small class="text-danger" *ngIf = "formValidation('phone').errors?.required">Phone is required</small>
-        <small class="text-danger" *ngIf = "formValidation('phone').errors?.forbidden">Invalid phone input</small>
+        <div *ngIf = "formValidation('phone').errors?.required; then thenBlock ; else elseBlock"></div>
+        <ng-template #thenBlock>
+          <small class="text-danger">Phone is required</small>
+        </ng-template>
+        <ng-template #elseBlock>
+          <small class="text-danger">Invalid phone input</small>
+        </ng-template>
       </div>
     </div>
 
@@ -46,13 +50,12 @@
       <input 
         type="password" 
         formControlName = "password" 
-        [ngClass] = "classes('password')"
+        [class.is-invalid] = "registrationForm.errors?.notMatch"
         class="form-control"
       >
       <div *ngIf = "formValidation('password').invalid && formValidation('password').touched">
         <small class="text-danger" *ngIf="formValidation('password').errors?.required">Password is required</small>
         <small class="text-danger" *ngIf="formValidation('password').errors?.minlength">Password must be at least 5 characters</small>
-
       </div>
     </div>
 
