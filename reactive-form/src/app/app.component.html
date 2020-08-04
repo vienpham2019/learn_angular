@@ -27,6 +27,15 @@
       </div>
     </div>
 
+    <div class="form-group ml-5">
+      <input 
+        type="checkbox"
+        formControlName = "subscribe"
+        class="form-check-input"
+      >
+      <label class = "form-check-label">Send me promotional offers</label>
+    </div>
+
     <div class="form-group">
       <label>Phone</label>
       <input 
@@ -61,7 +70,13 @@
 
     <div class="form-group">
       <label>Comfirm Password</label>
-      <input type="password" formControlName = "confirmPassword" class="form-control">
+      <input 
+        type="password" 
+        formControlName = "confirmPassword" 
+        class="form-control"
+        [class.is-invalid] = "registrationForm.errors?.notMatch"
+      >
+      <small class="text-danger" *ngIf = "registrationForm.errors?.notMatch">Password and Comfirm Password not match</small>
     </div>
 
     <div formGroupName = "address">

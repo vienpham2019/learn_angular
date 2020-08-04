@@ -16,6 +16,7 @@ export class AppComponent {
   registrationForm = this._fb.group({
     userName: ["" , [Validators.required , Validators.minLength(3)]], 
     email: ["", [Validators.required, forbiddenValidation(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
+    subscribe: [false], 
     phone: ["", [Validators.required, forbiddenValidation(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
     password: ["" , [Validators.required , Validators.minLength(5)]],
     confirmPassword: [""],
