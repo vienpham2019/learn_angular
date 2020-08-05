@@ -12,6 +12,7 @@ import { passwordValidation } from './shared/passwordValidation'
 export class AppComponent implements OnInit {
 
   registrationForm: FormGroup
+  index: number = 0 
 
   constructor (private _fb: FormBuilder ) { }
 
@@ -20,13 +21,17 @@ export class AppComponent implements OnInit {
   }
 
   addAlternateEmail(){
-    this.alternateEmail.push(this._fb.control(''))
+    this.alternateEmail.push(this._fb.control('' , [Validators.required , forbiddenValidation(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]))
+  }
+
+  removeAlternateEmail(index){
+    this.alternateEmail.removeAt(index)
   }
 
   ngOnInit(){
     this.registrationForm = this._fb.group({
       userName: ["" , [Validators.required , Validators.minLength(3)]], 
-      email: [""],
+      email: ["" ],
       subscribe: [false], 
       phone: ["", [Validators.required, forbiddenValidation(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
       password: ["" , [Validators.required , Validators.minLength(5)]],
