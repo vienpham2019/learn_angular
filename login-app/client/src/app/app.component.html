@@ -1,31 +1,39 @@
 <h1 class="text-center">Register Page</h1>
 
 <div class="container-fluid">
-  <form [formGroup] = "registrationForm">
+  <form [formGroup] = "registrationForm" (submit) = "onSubmit($event)">
 
     {{registrationForm.value | json}}
 
     <div class="form-group">
       <label>User name</label>
-      <input type="text" class="form-control" formControlName = "userName">
-      <small class="form-text">This is required</small>
+      <input type="text" class="form-control" formControlName = "userName" [ngClass] = "classes('userName')">
+      <div *ngIf = "error('userName')">
+        <ng-template [ngIf] = "_rt('userName').errors?.required" [ngIfElse] = "elseBlock">
+          <small class="text-danger">User name is required</small>
+        </ng-template>
+        <ng-template #elseBlock>
+          <small class="text-danger">User name {{_rt('userName').errors?.forbidden.value}} is not valid</small>
+        </ng-template>
+      </div>
     </div>
   
     <div class="form-group">
       <label>Email</label>
-      <input type="text" class="form-control" formControlName = "email" >
+      <input type="text" class="form-control" formControlName = "email" [ngClass] = "classes('email')" >
+      <small class="text-danger" *ngIf = "error('email')">Invalid input</small>
     </div>
 
     <div class="form-group">
       <label>Password</label>
-      <input type="text" class="form-control" formControlName = "password">
+      <input type="text" class="form-control" formControlName = "password" [ngClass] = "classes('password')">
     </div>
 
     <div class="form-group">
       <label>Confirm Password</label>
-      <input type="text" class="form-control" fromControlName = "confirmPassword">
+      <input type="text" class="form-control" formControlName = "confirmPassword" [ngClass] = "classes('confirmPassword')">
     </div>
 
-    <button class="btn btn-info">Submit</button>
+    <button class="btn btn-info" type="submit">Submit</button>
   </form>
 </div>
