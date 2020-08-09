@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       email: ["" ],
       subscribe: [false], 
       phone: ["", [Validators.required, forbiddenValidation(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/)]],
-      password: ["" , [Validators.required , Validators.minLength(5)]],
+      password: ["" , [Validators.required]],
       confirmPassword: [""],
       address: this._fb.group({
         city: [""],
