@@ -16,9 +16,12 @@ export class AppComponent implements OnInit{
   constructor(private _fb: FormBuilder){}
 
   ngOnInit(){ 
+    fetch('http://localhost:5000/api/users/')
+    .then(res => res.json())
+    .then(data => console.log(data))
     this.registrationForm = this._fb.group({
       userName: ['' , [Validators.required , forbiddenValidator(/admin/)]],
-      email: ['' , [Validators.required , forbiddenValidator(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ , true)]],
+      email: ['' , [Validators.required , forbiddenValidator(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/ , true)]],
       password: ['', [Validators.required , forbiddenValidator(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/ , true)]],
       confirmPassword: ['', [Validators.required] ]
     } , {validators: passwordValidator})
@@ -50,6 +53,17 @@ export class AppComponent implements OnInit{
 
   onSubmit(){
     this.formValid = this.registrationForm.status === "VALID" 
-    console.log(this.registrationForm.errors?.notMatch) 
+    if(this.formValid){
+      let option = {
+        method: "POST", 
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.registrationForm.value)
+      }
+      fetch('http://localhost:5000/api/users/register' , option)
+      .then(res => res.json())
+      .then(data => console.log(data))
+    }
   }
 }
