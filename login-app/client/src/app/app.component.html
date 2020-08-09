@@ -20,13 +20,14 @@
   
     <div class="form-group">
       <label>Email</label>
-      <input type="text" class="form-control" formControlName = "email" [ngClass] = "classes('email')" >
-      <div *ngIf = "error('email')">
+      <input type="text" class="form-control" formControlName = "email" [ngClass] = "emailClasses()" >
+      <div *ngIf = "error('email') || !!uniqeEmail">
         <ng-template [ngIf] = "_rt('email').errors?.required" [ngIfElse] = "elseBlock">
           <small class="text-danger">Email is required</small>
         </ng-template>
-        <ng-template>
-          <small class="text-danger">Invalid Email</small>
+        <ng-template #elseBlock>
+            <small class="text-danger" *ngIf = "_rt('email').errors?.forbidden">Invalid Email Input</small>
+            <small class="text-danger" *ngIf = "_rt('email').value === uniqeEmail && !_rt('email').errors?.forbidden">This email address is already taken.</small>
         </ng-template>
       </div>
     </div>

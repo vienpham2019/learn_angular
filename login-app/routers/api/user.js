@@ -17,7 +17,7 @@ router.post('/register' , (req,res) => {
     User.findOne({email})
     .then(user => {
         if(user) {
-            res.json({error: 'This email address is already taken.'})
+            res.json({error: 'This email address is already taken.' , email})
         }else{
             let new_user = new User({userName , email , password})
             bcrpt.genSalt(10 , (err , salt) => {

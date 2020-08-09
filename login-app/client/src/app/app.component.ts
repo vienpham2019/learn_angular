@@ -12,6 +12,7 @@ import { passwordValidator } from './validators/passwordValidator'
 export class AppComponent implements OnInit{
   registrationForm: FormGroup
   formValid: boolean = true
+  uniqeEmail: string 
 
   constructor(private _fb: FormBuilder){}
 
@@ -39,6 +40,14 @@ export class AppComponent implements OnInit{
     }
   }
 
+  emailClasses(){
+    let email  = this.classes('email')
+    return {
+      'is-invalid': email['is-invalid'] || this._rt('email').value === this.uniqeEmail ,
+      'is-valid': email['is-valid']
+    }
+  }
+
   confirmPasswordClass(){
     let confirmPassword  = this.classes('confirmPassword')
     return {
@@ -63,7 +72,9 @@ export class AppComponent implements OnInit{
       }
       fetch('http://localhost:5000/api/users/register' , option)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        this.uniqeEmail = data.email
+      })
     }
   }
 }
